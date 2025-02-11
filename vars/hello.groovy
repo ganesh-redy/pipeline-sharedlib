@@ -1,3 +1,3 @@
-def okay(){
+def call(){
   echo "jam"
 }

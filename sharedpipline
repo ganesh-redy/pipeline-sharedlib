@@ -1,0 +1,31 @@
+@Library('okay1') _  
+pipeline{ 
+    agent any
+    stages{
+        stage ("one"){
+            steps{
+                hello() 
+                script {
+                    test.sam()  // ✅ Explicitly call `sam()` from `test.groovy`
+                }
+            }
+        }
+        stage("two"){
+            steps{
+                script{
+                    newval.okay("ganesh")
+                }
+            }
+        }
+        stage("calling variables"){
+            steps{
+                script{
+                    def takeval = names.details()
+                    echo "name: ${takeval.created}"
+                    echo "date ${takeval.date}"
+                }
+            }
+        }
+    }
+    
+}
